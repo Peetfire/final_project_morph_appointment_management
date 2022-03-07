@@ -18,12 +18,21 @@ import {
 const WebRoutes = () => {
 
   
+  const [providerData,setProviderData] = useState([])
+
   
   useEffect(() => {
    getProviders().then((data) => setProviderData(data));
   }, []);
   
-  const [providerData,setProviderData] =useState()
+  // useEffect(() => {
+  //   if(providerData != undefined){
+  //     setProviderData(loadProviderData)
+  //   }
+  // }, [loadProviderData]);
+   
+  
+  
   
 //   const providerData = providerData.map(() => {
    

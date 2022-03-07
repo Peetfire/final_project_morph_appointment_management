@@ -19,6 +19,7 @@ public class AdminController {
 
     // INDEX
     @GetMapping("/admins")
+    @CrossOrigin("localhost:3000")
     public ResponseEntity<List<Admin>> getAllAdmins(){
         return new ResponseEntity<>(adminRepository.findAll(), HttpStatus.OK);
     }

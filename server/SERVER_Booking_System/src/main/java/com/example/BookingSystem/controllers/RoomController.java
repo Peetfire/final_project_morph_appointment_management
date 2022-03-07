@@ -15,6 +15,7 @@ public class RoomController {
     RoomRepository roomRepository;
 
     @GetMapping(value = "/rooms")
+    @CrossOrigin("localhost:3000")
     public ResponseEntity<List<Room>> getAllRooms(){
         return new ResponseEntity<>(roomRepository.findAll(), HttpStatus.OK);
     }

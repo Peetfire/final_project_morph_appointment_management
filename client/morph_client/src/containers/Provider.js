@@ -15,6 +15,14 @@ import Clients from "../components/Clients";
 
 
 export default class Client extends SampleBase {
+
+
+
+
+
+
+
+
   
 
   state = {
@@ -22,10 +30,13 @@ export default class Client extends SampleBase {
     hello:"joy"
   }
   
-  showTargetPage = (providerData) =>{
+  showTargetPage = () =>{
+
+  
+  
     
     if ((this.state.page)==="Diary"){return <Diary/>}
-    if ((this.state.page)==="Appointments"){return <Appointments providerData={this.props.providerData}/>} 
+    if ((this.state.page)==="Appointments"){return <Appointments  />} 
     if ((this.state.page)==="Dashboard"){return  <Dashboard/>}
     if ((this.state.page)==="Clients"){return  <Clients/>}
     if ((this.state.page)==="Teams"){return  <Teams/>}
@@ -34,6 +45,7 @@ export default class Client extends SampleBase {
     
   }
   constructor() {
+   
     super(...arguments);
     this.mediaQuery = "(min-width: 600px)";
     this.menuItems = [
@@ -92,7 +104,18 @@ export default class Client extends SampleBase {
     this.width = "220px";
     this.target = ".main-content";
   }
+     
+
   render() {
+    
+    // const providerNodes = this.props.providerData.map(providerData => { 
+  
+    //   return {providerData}
+    
+    //  })
+ 
+     
+
     return (
       <div className="control-section sidebar-menu">
         <div className="col-lg-12 col-sm-12 col-md-12 center">
@@ -161,7 +184,8 @@ export default class Client extends SampleBase {
             </SidebarComponent>
             <div className="main-content" id="maintext">
               <div className="sidebar-menu-content">
-               
+               {/* {console.log(providerNodes)} */}
+                {console.log(this.props.providerData)}
                 <div> {this.showTargetPage()}</div>
               </div>
             </div>

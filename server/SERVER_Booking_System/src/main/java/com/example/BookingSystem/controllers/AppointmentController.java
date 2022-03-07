@@ -16,18 +16,21 @@ public class AppointmentController {
 
     // INDEX
     @GetMapping(value = "/appointments")
+    @CrossOrigin("localhost:3000")
     public ResponseEntity<List<Appointment>> getAllAppointments(){
         return new ResponseEntity<>(appointmentRepository.findAll(), HttpStatus.OK);
     }
 
     //SHOW
     @GetMapping(value = "/appointments/{id}")
+    @CrossOrigin("localhost:3000")
     public ResponseEntity getAppointment(@PathVariable Long id){
         return new ResponseEntity<>(appointmentRepository.findById(id), HttpStatus.OK);
     }
 
     // CREATE
     @PostMapping(value = "/appointments")
+    @CrossOrigin("localhost:3000")
     public ResponseEntity<Appointment> createAppointment(@RequestBody Appointment appointment){
         appointmentRepository.save(appointment);
         return new ResponseEntity<>(appointment, HttpStatus.CREATED);
@@ -35,6 +38,7 @@ public class AppointmentController {
 
     // UPDATE
     @PutMapping(value = "/appointments/{id}")
+    @CrossOrigin("localhost:3000")
     public ResponseEntity<Appointment> updateAppointment(@RequestBody Appointment appointment, @PathVariable Long id){
         Appointment appointmentToUpdate = appointmentRepository.findById(id).get();
         appointmentToUpdate.setClient(appointment.getClient());

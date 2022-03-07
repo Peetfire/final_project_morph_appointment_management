@@ -16,15 +16,15 @@ const columns = [
 
   return (
   <>  
- 
+    {/* {console.log(providerData)} */}
     
-    <div style={{ height: 700, width: '100%' }}>
+    {/* <div style={{ height: 700, width: '100%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
         pageSize={12}
       />
-    </div>
+    </div> */}
   </>
   )
 }
