@@ -13,6 +13,9 @@ import Teams from "../components/Teams";
 import Clients from "../components/Clients";
 
 
+import SingleViewComponent from "../components/SingleViewComponent";
+
+
 
 export default class Client extends SampleBase {
   
@@ -161,8 +164,8 @@ export default class Client extends SampleBase {
             </SidebarComponent>
             <div className="main-content" id="maintext">
               <div className="sidebar-menu-content">
-               
-                <div> {this.showTargetPage()}</div>
+               <SingleViewComponent />
+                {/* <div> {this.showTargetPage()}</div> */}
               </div>
             </div>
           </div>
