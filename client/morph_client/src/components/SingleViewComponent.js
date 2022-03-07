@@ -106,7 +106,7 @@ export default function SingleViewComponent({ providerData }) {
           </TextField>
         </div>
       </div>
-      <Button variant="outlined">Edit</Button>
+      <Button variant="contained">Edit</Button>
     </Box>
   );
 }
