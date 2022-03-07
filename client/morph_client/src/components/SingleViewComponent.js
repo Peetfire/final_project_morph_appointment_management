@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { TextField, Button} from "@mui/material";
 import * as React from "react";
 import Box from '@mui/material/Box';
 // import TextField from '@mui/material/TextField';
@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 export default function SingleViewComponent({ providerData }) {
   return (
     <Box
+      component="form"
       sx={{
         boxShadow: 10, // theme.shadows[1]
         color: "primary.main", // theme.palette.primary.main
@@ -15,9 +16,11 @@ export default function SingleViewComponent({ providerData }) {
         },
         zIndex: "tooltip", // theme.zIndex.tooltip
         minWidth: 100,
-
-
+        "& .MuiTextField-root": { m: 1, width: "20ch" },
       }}
+      noValidate
+      autoComplete="off"
+
       // className="provider-container"
     >
       <div className="display-panel">
@@ -25,17 +28,29 @@ export default function SingleViewComponent({ providerData }) {
           <h2>Appointment Details</h2>
         </div>
         <div>
-          <TextField label="Client name" placeholder="data">
+          <TextField
+            sx={{
+              boxShadow: 5, // theme.shadows[1]
+              color: "secondary.main", // theme.palette.primary.main
+              borderRadius: 2,
+              m: 0.5, // margin: theme.spacing(1)
+              p: {
+                xs: 0.3, // [theme.breakpoints.up('xs')]: { padding: theme.spacing(1) }
+              },
+            }}
+            label="Client name"
+            placeholder="data"
+          >
             data goes here
           </TextField>
         </div>
         <div>
           <TextField
             sx={{
-              boxShadow: 10, // theme.shadows[1]
+              boxShadow: 5, // theme.shadows[1]
               color: "secondary.main", // theme.palette.primary.main
               borderRadius: 2,
-              m: 1, // margin: theme.spacing(1)
+              m: 0.5, // margin: theme.spacing(1)
               p: {
                 xs: 0.3, // [theme.breakpoints.up('xs')]: { padding: theme.spacing(1) }
               },
@@ -47,31 +62,51 @@ export default function SingleViewComponent({ providerData }) {
           </TextField>
         </div>
         <div>
-          <TextField label="Start" placeholder="data">
+          <TextField
+            sx={{
+              boxShadow: 5, // theme.shadows[1]
+              color: "secondary.main", // theme.palette.primary.main
+              borderRadius: 2,
+              m: 0.5, // margin: theme.spacing(1)
+              p: {
+                xs: 0.3, // [theme.breakpoints.up('xs')]: { padding: theme.spacing(1) }
+              },
+            }}
+            label="Start"
+            placeholder="data"
+          >
+            data goes here
+          </TextField>
+
+          <TextField
+            sx={{
+              boxShadow: 5, // theme.shadows[1]
+              color: "secondary.main", // theme.palette.primary.main
+              borderRadius: 2,
+              m: 0.5, // margin: theme.spacing(1)
+              p: {
+                xs: 0.3, // [theme.breakpoints.up('xs')]: { padding: theme.spacing(1) }
+              },
+            }}
+            label="End"
+            placeholder="data"
+          >
             data goes here
           </TextField>
         </div>
-        <div>
-          <TextField label="End" placeholder="data">
-            data goes here
-          </TextField>
-        </div>
-        <div>
-          <TextField label="End" placeholder="data">
-            data goes here
-          </TextField>
-        </div>
+
         <div>
           <TextField label="Provider" placeholder="data">
             data goes here
           </TextField>
         </div>
-        {/* <div>
+        <div>
           <TextField label="Location" placeholder="data">
             data goes here
           </TextField>
-        </div> */}
+        </div>
       </div>
+      <Button variant="outlined">Edit</Button>
     </Box>
   );
 }
