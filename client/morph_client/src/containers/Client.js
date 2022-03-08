@@ -40,6 +40,7 @@ export default class Client extends SampleBase {
     
     if((this.state.page) ==="Diary"){return <Diary/>}
     if((this.state.page)==="Appointments"){return <Appointments appointmentData = {this.props.appointmentData}/>} 
+    
     if ((this.state.page)==="Dashboard"){return  <Dashboard/>}
     if ((this.state.page)==="Accounts"){return  <Accounts/>}
     

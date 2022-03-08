@@ -4,7 +4,7 @@ const Appointments = (appointmentData) => {
 
 const rows = appointmentData.appointmentData.map(appointment=>{
  
- return{
+  return{
     id:appointment.id,
     col1:appointment.id,
     col2: appointment.client.firstName+" "+appointment.client.lastName,
@@ -12,10 +12,10 @@ const rows = appointmentData.appointmentData.map(appointment=>{
     col4:appointment.provider.firstName+" "+appointment.provider.lastName,
     col5:appointment.type,
     col6:appointment.startTime,
-    col7:appointment.endTime
+    col7:appointment.endTime,
+    
     }
 })
-
 const columns = [
   
   { field: 'col1', headerName: 'Appointment', width: 150 },
@@ -32,8 +32,9 @@ const columns = [
   <>  
 
     
-    <div style={{ height: 700, width: '100%' }}>
+    <div style={{ height: 650, width: '100%' }}>
       <DataGrid
+        rowHeight={50}
         rows={rows}
         columns={columns}
         pageSize={12}

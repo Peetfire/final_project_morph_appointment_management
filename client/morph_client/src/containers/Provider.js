@@ -28,9 +28,13 @@ export default class Client extends SampleBase {
     if ((this.state.page)==="Diary"){return <Diary/>}
     if ((this.state.page)==="Appointments"){return <Appointments appointmentData = {this.props.appointmentData} />} 
     if ((this.state.page)==="Dashboard"){return  <Dashboard/>}
-    if ((this.state.page)==="Clients"){return  <Clients/>}
+    if ((this.state.page)==="Clients"){return  <Clients providerClients ={this.props.providerClients} />}
     if ((this.state.page)==="Teams"){return  <Teams/>}
     if ((this.state.page)==="Locations"){return  <Dashboard/>}
+    if ((this.state.page)==="Appointment"){return  <Dashboard/>}
+  
+
+    
   }
   constructor() {
     super(...arguments);
