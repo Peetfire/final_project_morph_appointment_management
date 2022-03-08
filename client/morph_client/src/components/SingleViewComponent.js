@@ -87,6 +87,7 @@ export default function SingleViewComponent({ providerData }) {
               p: {
                 xs: 0.3, // [theme.breakpoints.up('xs')]: { padding: theme.spacing(1) }
               },
+
             }}
             label="End"
             placeholder="data"
