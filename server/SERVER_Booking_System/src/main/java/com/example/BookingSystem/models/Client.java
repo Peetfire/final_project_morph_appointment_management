@@ -30,9 +30,27 @@ public class Client {
     @Column(name = "email")
     private String email;
 
-    @JsonIgnoreProperties({"client"})
+    @JsonIgnoreProperties({"appointments", "locations", "providers"})
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<Appointment> appointments;
+
+    @ManyToMany
+    @JsonIgnoreProperties({"providers", "appointments"})
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "clients_locations",
+            joinColumns = { @JoinColumn(
+                    name = "client_id",
+                    nullable = false,
+                    updatable = false)
+            },
+            inverseJoinColumns = { @JoinColumn(
+                    name = "location_id",
+                    nullable = false,
+                    updatable = false)
+            }
+    )
+    private List<Location> locations;
 
     @ManyToMany
     @JsonIgnoreProperties({"clients", "locations", "appointments"})
@@ -63,6 +81,15 @@ public class Client {
         this.email = email;
         this.appointments = new ArrayList<>();
         this.providers = new ArrayList<>();
+        this.locations = new ArrayList<>();
+    }
+
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
     }
 
     public List<Provider> getProviders() {

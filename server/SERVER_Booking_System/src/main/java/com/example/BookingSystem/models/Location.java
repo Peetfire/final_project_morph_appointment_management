@@ -27,7 +27,7 @@ public class Location {
     @Column(name="email")
     private String email;
 
-    @JsonIgnoreProperties(value="location")
+    @JsonIgnoreProperties(value= {"location", "appointments"})
     @OneToMany(mappedBy = "location", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<Room> rooms;
 
@@ -40,7 +40,25 @@ public class Location {
     private List<Admin> admins;
 
     @ManyToMany
-    @JsonIgnoreProperties({"locations","rooms"})
+    @JsonIgnoreProperties({"providers", "appointments"})
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "clients_locations",
+            joinColumns = { @JoinColumn(
+                    name = "location_id",
+                    nullable = false,
+                    updatable = false)
+            },
+            inverseJoinColumns = { @JoinColumn(
+                    name = "client_id",
+                    nullable = false,
+                    updatable = false)
+            }
+    )
+    private List<Client> clients;
+
+    @ManyToMany
+    @JsonIgnoreProperties({"locations","rooms", "clients", "appointments"})
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
             name = "locations_providers",
@@ -65,10 +83,19 @@ public class Location {
         this.rooms = new ArrayList<>();
         this.admins = new ArrayList<>();
         this.providers = new ArrayList<>();
+        this.clients = new ArrayList<>();
         this.appointments = new ArrayList<>();
     }
 
     public Location(){
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 
     public List<Appointment> getAppointments() {
@@ -153,4 +180,5 @@ public class Location {
 
     public void addAdmin(Admin admin) {this.admins.add(admin); }
 
+    public void addClient(Client client) {this.clients.add(client); }
 }

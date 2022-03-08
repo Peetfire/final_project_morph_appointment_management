@@ -21,20 +21,19 @@ export default class Client extends SampleBase {
   
 
   state = {
-    page:"Dashboard",
-    hello:"joy"
+    page:"Dashboard"
   }
   
-  showTargetPage = (providerData) =>{
+
+  
+  showTargetPage = () =>{
     
     if ((this.state.page)==="Diary"){return <Diary/>}
-    if ((this.state.page)==="Appointments"){return <Appointments providerData={this.props.providerData}/>} 
+    if ((this.state.page)==="Appointments"){return <Appointments appointmentData = {this.props.appointmentData} />} 
     if ((this.state.page)==="Dashboard"){return  <Dashboard/>}
     if ((this.state.page)==="Clients"){return  <Clients/>}
     if ((this.state.page)==="Teams"){return  <Teams/>}
     if ((this.state.page)==="Locations"){return  <Dashboard/>}
-    
-    
   }
   constructor() {
     super(...arguments);
@@ -96,6 +95,11 @@ export default class Client extends SampleBase {
     this.target = ".main-content";
   }
   render() {
+
+    // const appointmentData = this.props.providerData.appointments.map(appointment=>{
+    //   return appointment;
+      
+    // })
     return (
       <div className="control-section sidebar-menu">
         <div className="col-lg-12 col-sm-12 col-md-12 center">
@@ -164,8 +168,7 @@ export default class Client extends SampleBase {
             </SidebarComponent>
             <div className="main-content" id="maintext">
               <div className="sidebar-menu-content">
-               <SingleViewComponent />
-                {/* <div> {this.showTargetPage()}</div> */}
+                <div> {this.showTargetPage()}</div>
               </div>
             </div>
           </div>
