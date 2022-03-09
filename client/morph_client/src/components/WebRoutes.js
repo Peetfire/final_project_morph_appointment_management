@@ -22,10 +22,12 @@ import {
 const WebRoutes = () => {
 
   const [appointmentId,setAppointmentId] = useState(0)
+  const [clientId,setClientid] = useState(0)
   const [providerData,setProviderData] = useState({})
   const [providerAppointmentData,setProviderAppointmentData] = useState([])
   const [clientData,setClientData]=useState({})
   const [clientAppointmentData,setClientAppointmentData]=useState([])
+  const [singleClientData,setSingleClientData] = useState({})
   const [singleAppointmentData,setSingleAppointmentData] = useState({})
   const [locationData, setLoactionData] = useState([])
   const [therapistData, setTherapistData] = useState([])
@@ -41,11 +43,13 @@ const WebRoutes = () => {
   
    }, [page]);
   
+   useEffect(() => {
+    if(clientId!== 0){getClientById(clientId).then((data) => setSingleClientData(data));}
+  }, [clientId]);
 
    useEffect(() => {
      if(appointmentId !== 0){getAppointmentById(appointmentId).then((data) => setSingleAppointmentData(data));}
-   
-   }, [appointmentId]);
+    }, [appointmentId]);
 
   useEffect(() => {
     if(Object.keys(providerData).length !== 0 ){
@@ -62,6 +66,10 @@ const WebRoutes = () => {
     setAppointmentId(id)
   }
 
+  const handleSetClient=(id)=>{
+    setClientid(id)
+  }
+
   const pageSetter = (page) => {
     setPage(page)
   }
@@ -74,7 +82,7 @@ const WebRoutes = () => {
         <Route path='/' element={<HomePage />} />
         <Route path='/login' element={<Login/>} />
         <Route path='/signup' element={<Signup/>} />
-        <Route path='/provider' element={<Provider appointmentData= {providerAppointmentData} page={page} setPage={pageSetter} singleAppointmentData={singleAppointmentData} setAppointmentId={handleSetAppointment} locationData={locationData} therapistData={therapistData} providerClients={providerClients}/>} />
+        <Route path='/provider' element={<Provider appointmentData= {providerAppointmentData} page={page} setPage={pageSetter} singleAppointmentData={singleAppointmentData} setAppointmentId={handleSetAppointment} locationData={locationData} therapistData={therapistData} providerClients={providerClients} handleSetClient = {handleSetClient} singleClientData={singleClientData}/>} />
         <Route path='/client' element={<Client appointmentData={clientAppointmentData} singleAppointmentData={singleAppointmentData}/>} />
         <Route path='/booking' element={<Booking/>} />
       </Routes>

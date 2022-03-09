@@ -43,7 +43,6 @@ export default class Client extends SampleBase {
     if ((this.state.page)==="Dashboard"){return  <Dashboard/>}
     if ((this.state.page)==="Accounts"){return  <Accounts/>}
     
-    
   }
   
   constructor() {
