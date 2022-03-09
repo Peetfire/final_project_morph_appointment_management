@@ -14,6 +14,7 @@ import Appointments from "../components/appointments/Appointments";
 import SingleAppointment from "../components/appointments/SingleAppointment";
 import EditAppointment from "../components/appointments/EditAppointment";
 import SingleClient from "../components/Client/SingleClient";
+import EditClient from "../components/Client/EditClient";
 
 
 
@@ -43,6 +44,8 @@ export default class Client extends SampleBase {
     if ((this.props.page)==="Single Appointment"){return  <SingleAppointment singleAppointmentData={this.props.singleAppointmentData} setPage={this.props.setPage.bind(this)}/>}
     if ((this.props.page)==="Edit Appointment"){return <EditAppointment singleAppointmentData={this.props.singleAppointmentData} setPage={this.props.setPage.bind(this)} locationData={this.props.locationData} therapistData={this.props.therapistData} providerClients={this.props.providerClients}/>}
     if ((this.props.page)==="Single Client"){return  <SingleClient singleClientData={this.props.singleClientData} setPage={this.props.setPage.bind(this)}/>}
+    if ((this.props.page)==="Edit Client"){return <EditClient singleClientData={this.props.singleClientData} setPage={this.props.setPage.bind(this)} locationData={this.props.locationData} therapistData={this.props.therapistData} providerClients={this.props.providerClients}/>}
+    
   }
   constructor() {
     super(...arguments);

@@ -86,6 +86,7 @@ const EditAppointment = ({singleAppointmentData, providerClients, locationData, 
 
             // className="provider-container"
             >
+            <form onSubmit={handleUpdateClick}>
             <div className="display-panel">
                 <div>
                 <h2 >Edit Appointment</h2>
@@ -253,7 +254,7 @@ const EditAppointment = ({singleAppointmentData, providerClients, locationData, 
                     variant="contained" 
                     onClick={handleCancleClick}
                     size="large"
-                >Cancel</Button>
+                >Cancle</Button>
                 <Button 
                     style={{width: 100}}
                     sx={{
@@ -266,12 +267,13 @@ const EditAppointment = ({singleAppointmentData, providerClients, locationData, 
                     size="large"
                 >Update</Button>
             </div>
+            </form>
             </Box>
             </div>
             
         );
-        function handleClientChange(event){
-            setClientId(event.target.value);
+        function handleClientChange(newValue){
+            setClientId(newValue);
         }
 
         function handleUpdateClick(){
@@ -291,18 +293,17 @@ const EditAppointment = ({singleAppointmentData, providerClients, locationData, 
             console.log(payload)
             console.log(aptId)
             updateAppointment(payload, aptId);
-            setPage("Appointments")
 
         }
         function handleCancleClick(){
             setPage("Single Appointment")
         }
-        function handleLocationChange(event){
-            setLocationId(event.target.value)
+        function handleLocationChange(newValue){
+            setLocationId(newValue)
         }
 
         function handleTherapistChange(event){
-            setProviderId(event.target.value)
+            setProviderId(event.taget.value)
             for(const therapist of therapists){
                 if(therapist.value === event.target.value){
                     setAptType(therapist.name)
