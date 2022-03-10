@@ -1,18 +1,20 @@
 
 import * as React from "react";
 import { useEffect, useState } from "react";
+
 import Box from '@mui/material/Box';
 import { fontSize, width } from "@mui/system";
-import { TextField, Button} from "@mui/material";
-import {withStyles, styled} from "@mui/styles";
-import {TextFieldProps} from "@material-ui/core"
+import { TextField, Button, MenuItem} from "@mui/material";
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import format from "date-fns/format";
+import { TimePicker } from "@mui/lab";
+import { updateAppointment } from "../../service";
 
-// Set color for disabled input??
-
+const DeleteAppointment = ({singleAppointmentData}) => {
     
-export default function SingleAppointment({singleAppointmentData, setPage}) {
-
-    // Get data to fill in fields
+    
     const [pageToDispaly, setPageToDisplay] = useState("loading")
     useEffect(() => {
         if(Object.keys(singleAppointmentData).length !== 0){
@@ -203,37 +205,13 @@ export default function SingleAppointment({singleAppointmentData, setPage}) {
                 <Button 
                     style={{width: 100}}
                     sx={{
-                        mr:4,
-                        mt:3,
-                        mr:4,
-                        mb:2,
-                    }}
-                    variant="contained" 
-                    onClick={handleCancleClick}
-                    size="large"
-                    >Cancel</Button>
-                <Button 
-                    style={{width: 100}}
-                    sx={{
-                        mt:3,
-                        ml:4,
-                        mb:2,
-                    }}
-                    variant="contained" 
-                    onClick={handleEditClick}
-                    size="large"
-                >Edit</Button> 
-                 <Button 
-                    style={{width: 100}}
-                    sx={{
-                        ml:4,
                         mt:3,
                         mb:2,
                     }}
                     variant="contained" 
                     onClick={handleEditClick}
                     size="large"
-                >Cancel</Button>
+                >Delete</Button>
             </div>
             
             </Box>
@@ -242,8 +220,8 @@ export default function SingleAppointment({singleAppointmentData, setPage}) {
         function handleEditClick(){
             setPage("Edit Appointment")
         }
-        function handleCancleClick(){
-            setPage("Appointments")
-        }
     }
-}
+};
+
+
+export default EditAppointment;

@@ -35,7 +35,7 @@ const Appointments = ({appointmentsData, setPage, setAppointment}) => {
   ];
     
     const handleCellClick =(event)=>{
-    
+      
       setAppointment(event.id)
       setPage("Single Appointment")
     

@@ -89,6 +89,73 @@ const EditAppointment = ({singleAppointmentData, providerClients, locationData, 
     if(pageToDispaly === "content"){
         return (
             <div>
+<<<<<<< HEAD
+            <Box
+                style={{width: 550}}
+                sx={{
+                boxShadow: 10, // theme.shadows[1]
+                color: "primary.main", // theme.palette.primary.main
+                m: "auto", // margin: theme.spacing(1)
+                p: {
+                xs: 2, // [theme.breakpoints.up('xs')]: { padding: theme.spacing(1) }
+                },
+                zIndex: "tooltip", // theme.zIndex.tooltip
+                minWidth: 100,
+                "& .MuiTextField-root": { m: 1, width: "20ch" },
+            }}
+            noValidate
+            autoComplete="off"
+
+            // className="provider-container"
+            >
+            <form onSubmit={handleUpdateClick}>
+            <div className="display-panel">
+                <div>
+                <h2 >Edit Appointment</h2>
+                </div>
+                
+                <div>
+                <TextField
+                    // sx={{
+                    // boxShadow: 5, // theme.shadows[1]
+                    // color: "secondary.main", // theme.palette.primary.main
+                    // borderRadius: 2,
+                    // m: 0.5, // margin: theme.spacing(1)
+                    // p: {
+                    //     xs: 0.4, // [theme.breakpoints.up('xs')]: { padding: theme.spacing(1) }
+                    // },
+                    // }}
+                    InputProps={{style: {fontSize: 18}}}
+                    label="Client name"
+                    defaultValue={singleAppointmentData.client.id}
+                    value={clientId}
+                    select
+                    onChange={handleClientChange}
+                    // size="small"
+                >
+                    {clients.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </TextField>
+                </div>
+                <div>
+                <TextField
+                    // sx={{
+                    // // boxShadow: 5, // theme.shadows[1]
+                    // color: "secondary.main", // theme.palette.primary.main
+                    // borderRadius: 2,
+                    // // m: 0.5, // margin: theme.spacing(1)
+                    // p: {
+                    //     // xs: 0.4, // [theme.breakpoints.up('xs')]: { padding: theme.spacing(1) }
+                    // },
+                    // }}
+                    InputProps={{style: {fontSize: 18}}}
+                    label="Appointment Type"
+                    value={aptType}
+                    // size="small"
+=======
                 <Box
                     style={{width: 550}}
                     sx={{
@@ -104,6 +171,7 @@ const EditAppointment = ({singleAppointmentData, providerClients, locationData, 
                     }}
                     noValidate
                     autoComplete="off"
+>>>>>>> experimental
                 >
                     <div className="display-panel">
                         <div>
@@ -176,6 +244,51 @@ const EditAppointment = ({singleAppointmentData, providerClients, locationData, 
                             </div>
                         </div>
 
+<<<<<<< HEAD
+                    // }}
+                    InputProps={{style: {fontSize: 18}}}
+                    label="Location"
+                    defaultValue={singleAppointmentData.location.id}
+                    value={locationId}
+                    // size="small"
+                    select
+                    onChange={handleLocationChange}
+                >
+                    {locations.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </TextField>
+                </div>
+            </div>
+            <div>
+                <Button 
+                    style={{width: 100}}
+                    sx={{
+                        mt:3,
+                        mr:4,
+                        mb:2,
+                    }}
+                    variant="contained" 
+                    onClick={handleCancleClick}
+                    size="large"
+                >Cancle</Button>
+                <Button 
+                    style={{width: 100}}
+                    sx={{
+                        mt:3,
+                        ml:4,
+                        mb:2,
+                    }}
+                    variant="contained" 
+                    onClick={handleUpdateClick}
+                    size="large"
+                >Update</Button>
+            </div>
+            </form>
+            </Box>
+=======
                         <div>
                         <TextField 
                             InputProps={{style: {fontSize: 18}}}
@@ -244,11 +357,12 @@ const EditAppointment = ({singleAppointmentData, providerClients, locationData, 
                         Appointment could not be created!
                     </Alert>
                 </Snackbar>
+>>>>>>> experimental
             </div>
             
         );
-        function handleClientChange(event){
-            setClientId(event.target.value);
+        function handleClientChange(newValue){
+            setClientId(newValue);
         }
 
         function handleUpdateClick(){
@@ -265,6 +379,9 @@ const EditAppointment = ({singleAppointmentData, providerClients, locationData, 
                 location: {id:locationId},
                 room: {id: 1}
             }
+<<<<<<< HEAD
+            updateAppointment(payload, aptId);
+=======
             // Make fetch request and store result
             const result = updateAppointment(payload, aptId);
             result.then((info) => {
@@ -279,17 +396,19 @@ const EditAppointment = ({singleAppointmentData, providerClients, locationData, 
                     setFailOpen(true)
                 }
             })
+>>>>>>> experimental
 
         }
+        
         function handleCancleClick(){
             setPage("Single Appointment")
         }
-        function handleLocationChange(event){
-            setLocationId(event.target.value)
+        function handleLocationChange(newValue){
+            setLocationId(newValue)
         }
 
         function handleTherapistChange(event){
-            setProviderId(event.target.value)
+            setProviderId(event.taget.value)
             for(const therapist of therapists){
                 if(therapist.value === event.target.value){
                     setAptType(therapist.name)
