@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import ReactDOM from "react-dom";
 
@@ -15,6 +14,7 @@ import SingleAppointment from "../components/appointments/SingleAppointment";
 import EditAppointment from "../components/appointments/EditAppointment";
 import SingleClient from "../components/Client/SingleClient";
 import EditClient from "../components/Client/EditClient";
+import Schedule from "../components/Diary";
 
 
 
@@ -36,7 +36,7 @@ export default class Client extends SampleBase {
   
   showTargetPage = () =>{
   
-    if ((this.props.page)==="Diary"){return <Diary/>}
+    if ((this.props.page)==="Diary"){return <Schedule appointmentsData = {this.props.appointmentData}/>}
     if ((this.props.page)==="Appointments"){return <Appointments appointmentsData = {this.props.appointmentData} setPage={this.props.setPage} setAppointment ={this.props.setAppointmentId} />} 
     if ((this.props.page)==="Dashboard"){return  <Dashboard/>}
     if ((this.props.page)==="Clients"){return  <Clients providerClients={this.props.providerClients} handleSetClient={this.props.handleSetClient} setPage = {this.props.setPage.bind(this)}/>}
@@ -45,6 +45,7 @@ export default class Client extends SampleBase {
     if ((this.props.page)==="Edit Appointment"){return <EditAppointment singleAppointmentData={this.props.singleAppointmentData} setPage={this.props.setPage.bind(this)} locationData={this.props.locationData} therapistData={this.props.therapistData} providerClients={this.props.providerClients}/>}
     if ((this.props.page)==="Single Client"){return  <SingleClient singleClientData={this.props.singleClientData} setPage={this.props.setPage.bind(this)}/>}
     if ((this.props.page)==="Edit Client"){return <EditClient singleClientData={this.props.singleClientData} setPage={this.props.setPage.bind(this)} locationData={this.props.locationData} therapistData={this.props.therapistData} providerClients={this.props.providerClients}/>}
+  
     
   }
   constructor() {

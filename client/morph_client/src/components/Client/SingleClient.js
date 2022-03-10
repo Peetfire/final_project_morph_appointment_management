@@ -12,7 +12,7 @@ const SingleClient = ({singleClientData,setPage}) => {
   const [pageToDispaly, setPageToDisplay] = useState("loading")
   useEffect(() => {
       if(Object.keys(singleClientData).length !== 0){
-          console.log(singleClientData)
+         
           setPageToDisplay("content")
       }
   }, [singleClientData]);

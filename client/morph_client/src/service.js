@@ -12,17 +12,7 @@ export const getAppointmentById = (id) => {
   return fetch(baseURLAppointments+id).then((res) => res.json());
 };
 
-export const updateClient = (payload, id) => {
-  const stuff = {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  }
 
-  return fetch(baseURLClients + id, stuff)
-  .then(res => res.json())
-  
-}
 export const getProviders = () => {
   return fetch(baseURLProviders).then((res) => res.json());
 };
@@ -64,8 +54,33 @@ export const updateAppointment = (payload, id) => {
   console.log(stuff.body)
   return fetch(baseURLAppointments + id, stuff)
   .then(res => res.json())
+}
+  
+export const updateClient = (payload, id) => {
+  const stuff = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  }
+  return fetch(baseURLClients + id, stuff)
+  .then(res => res.json())
   
 }
+
+export const addClient= (client) => {
+  return fetch(baseURLClients, {
+    method: 'POST',
+    body: JSON.stringify(client),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => res.json());
+}
+
+
+  
+
 
 
 

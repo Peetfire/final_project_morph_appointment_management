@@ -290,11 +290,10 @@ const EditAppointment = ({singleAppointmentData, providerClients, locationData, 
                 location: {id:locationId},
                 room: {id: 1}
             }
-            console.log(payload)
-            console.log(aptId)
             updateAppointment(payload, aptId);
 
         }
+        
         function handleCancleClick(){
             setPage("Single Appointment")
         }

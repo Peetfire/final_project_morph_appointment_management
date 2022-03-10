@@ -11,10 +11,9 @@ import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import format from "date-fns/format";
 import { TimePicker } from "@mui/lab";
 import { updateClient } from "../../service";
-const EditClient = ({singleClientData,setPage}) => {
-    const [pageToDispaly, setPageToDisplay] = useState("loading");
-      
+const CreateClient = ({}) => {
     
+    const [pageToDispaly, setPageToDisplay] = useState("loading");
     const [clientId, setClientId] = useState("")
     const [firstName, setFirstName] = useState("");
     const [lastName,setLastName]= useState("")
@@ -25,15 +24,10 @@ const EditClient = ({singleClientData,setPage}) => {
     
     
     useEffect(() => {
-        if(Object.keys(singleClientData).length !== 0){
-           
+        if(Object.keys().length !== 0){
+        
             setPageToDisplay("content");
-            setClientId(singleClientData.id)
-            setFirstName(singleClientData.firstName)
-            setLastName(singleClientData.lastName)
-            setEmail(singleClientData.email)
-            setDateOfBirth(singleClientData.dob)
-            setPhoneNUmber(singleClientData.phone)
+       
           
            
         }
@@ -42,11 +36,13 @@ const EditClient = ({singleClientData,setPage}) => {
    const handleCancelClick=()=>{
       setPage("Single Client")
     }
-
+    const handleAddClick=()=>{
+        setPage("Add Client")
+      }
     const handleSubmit=(event)=>{
       event.preventDefault()
       const payload = {
-        id:clientId,
+        
         firstName: firstName,
         lastName: lastName,
         dob: dateOfBirth,
@@ -55,7 +51,7 @@ const EditClient = ({singleClientData,setPage}) => {
 
     } 
   
-    updateClient(payload, clientId);
+    CreateClient(payload, clientId);
     
     setPage("Single Client")
     }
@@ -97,7 +93,7 @@ const EditClient = ({singleClientData,setPage}) => {
                     onChange={(e)=>setFirstName(e.target.value)}
                     InputProps={{style: {fontSize: 18}}}
                     label="First Name"
-                    defaultValue={firstName}
+                    
                     // size="small"
                 >
                     data goes here
@@ -108,7 +104,7 @@ const EditClient = ({singleClientData,setPage}) => {
                     onChange={(e)=>setLastName(e.target.value)}
                     InputProps={{style: {fontSize: 18}}}
                     label="Last name"
-                    defaultValue={lastName}
+                   
                     // size="small"
                 >
                     data goes here
@@ -119,7 +115,7 @@ const EditClient = ({singleClientData,setPage}) => {
                     onChange={(e)=>setDateOfBirth(e.target.value)}
                     InputProps={{style: {fontSize: 18}}}
                     label="Date of Birth"
-                    defaultValue={dateOfBirth}
+                   
                     // size="small"
                 >
                     data goes here
@@ -130,7 +126,7 @@ const EditClient = ({singleClientData,setPage}) => {
                       onChange={(e)=>setPhoneNUmber(e.target.value)}
                     InputProps={{style: {fontSize: 18}}}
                     label="Phone"
-                    defaultValue={phoneNumber}
+                  
                     // size="small"
                 >
                     data goes here
@@ -141,7 +137,7 @@ const EditClient = ({singleClientData,setPage}) => {
                   onChange={(e)=>setEmail(e.target.value)}
                     InputProps={{style: {fontSize: 18}}}
                     label="email"
-                    defaultValue={email}
+                   
                     // size="small"
                 >
                     data goes here
@@ -174,8 +170,9 @@ const EditClient = ({singleClientData,setPage}) => {
                     variant="contained" 
                     
                     size="large"
-                >Update</Button>
+                ></Button>
             </div>
+           
             </div>
             </form>
             </Box>
